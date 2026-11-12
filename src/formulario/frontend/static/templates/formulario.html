@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', path='styles/formulario.css') }}">
+    <title>Formulario 4</title>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Formulario de Contacto</h1>
+        <p class="descripcion">Completa los siguientes datos:</p>
+        <form id="formulario" novalidate>
+            <div class="campo">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre" placeholder="Escribe aqui tu nombre">
+            </div>
+            <div class="campo">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="ejemplo@correo.com">
+            </div>
+            <fieldset>
+                <legend>Sexo</legend>
+                <div class="opciones">
+                    <label>
+                        <input type="radio" name="sexo" value="hombre"> Hombre
+                    </label>
+                    <label>
+                        <input type="radio" name="sexo" value="mujer"> Mujer
+                    </label>
+                    <label>
+                        <input type="radio" name="sexo" value="no_especificado"> No Especificado
+                    </label>
+                </div>
+            </fieldset>
+            <div class="campo">
+                <label for="intereses">Intereses</label>
+                <select name="intereses" id="intereses">
+                    <option value="">Selecciona una Opcion</option>
+                    <option value="tecnologia">Tecnologia</option>
+                    <option value="programacion">Programacion</option>
+                    <option value="diseno_web">Diseño Web</option>
+                    <option value="educacion">Educacion</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label for="telefono">Telefono</label>
+                <input type="tel" name="telefono" id="telefono" inputmode="numeric" maxlength="10" placeholder="10 digitos">
+            </div>
+            <div class="campo">
+                <label for="mensaje">Mensaje:</label>
+                <textarea name="mensaje" id="mensaje" rows="4" placeholder="Escribe tu mensaje"></textarea>
+            </div>
+            <p id="error" class="error" role="alert"></p>
+            <div class="acciones">
+                <button type="submit" id="btnEnviar">Enviar Datos</button>
+                <button type="button" id="btnConsultar" class="btn-secundario">Consultar Ultimo</button>
+            </div>
+        </form>
+    </div>
+
+    <dialog id="modalContacto" aria-labelledby="modalTitulo">
+        <div class="modal-contenido">
+            <header class="modal-header">
+                <h2 id="modalTitulo">Contacto #<span id="datoId"></span></h2>
+                <button type="button" id="btnCerrarModal" class="btn-cerrar" aria-label="Cerrar ventana">X</button>
+            </header>
+            <dl class="lista-datos">
+                <div><dt>Nombre</dt><dd id="datoNombre"></dd></div>
+                <div><dt>Email</dt><dd id="datoEmail"></dd></div>
+                <div><dt>Sexo</dt><dd id="datoSexo"></dd></div>
+                <div><dt>Intereses</dt><dd id="datoIntereses"></dd></div>
+                <div><dt>Telefono</dt><dd id="datoTelefono"></dd></div>
+                <div><dt>Mensaje</dt><dd id="datoMensaje"></dd></div>
+            </dl>
+        </div>
+    </dialog>
+
+    <script type="module" src="{{ url_for('static', path='js/formulario.js') }}"></script>
+</body>
+</html>
